@@ -1,0 +1,85 @@
+@import url('https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css');
+
+* {
+    font-family: 'NanumSquareNeo';
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background-color: #d7d7d7;
+}
+
+
+
+section#container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+
+}
+
+
+.box {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.box .item form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.box .item.cancel {
+    display: flex;
+    justify-content: space-between;
+    padding:50px;
+}
+.box .item.cancel span:nth-child(1) {
+    font-weight: 800;
+}
+
+h1{
+    border-left: 4px solid orange;
+    padding-left: 20px;
+    margin: 30px 0 30px 20px;
+
+    font-weight: 900;
+}
+
+input {
+    width: 600px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.btnwrap {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+    padding-right:5px;
+}
+
+#refundBtn {
+    background-color: orange;
+    width: 130px;
+    height: 50px;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    border: 0;
+}
+
+#refundBtn:hover {
+    background-color: white;
+    color: orange;
+    border: 1px solid orange;
+}

@@ -1,0 +1,159 @@
+section#board {
+    width: 90rem;
+    margin: 0 auto;
+    /* background-color: pink; */
+}
+
+header,
+section#title ,
+section#content,
+footer {
+    padding: 0 5rem 0 5rem;
+}
+header {
+    margin: 5rem 0 1rem 0;
+    /* background-color: red; */
+    border-bottom: 3px solid black;
+    display: flex;
+    height: 5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#title {
+    /* background-color: green; */
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom: 1px solid gray;
+}
+
+input[name="qna_title"] {
+    font-size: 22px;
+    font-weight: bold;
+    border: 0;
+}
+
+input[name="qna_title"]:focus{
+    outline: none;
+}
+
+.user_info {
+    display: flex;
+    justify-content: space-between;
+}
+section#content {
+    /* background-color: blue; */
+    min-height: 40rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 3px solid black;
+    margin-bottom: 2rem;
+}
+
+
+
+textarea[name="qna_content"] {
+    width: 100%;
+    padding: 10px 0 0 10px;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    /* background-color: yellow; */
+    height: 4rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+button.listBtn,
+button.completeBtn,
+button.denyBtn,
+button.usermodifyBtn,
+button.bizmodifyBtn,
+button#userwriteBtn,
+button#bizwriteBtn{
+    color: white;
+    border: 0;
+    background-color: orange;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 0.625rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+/* Comment */
+
+#commentForm {
+    display: flex;
+
+}
+
+.commentBox{
+    margin-bottom: 30px;
+}
+
+.commentContainer{
+    padding: 0 80px 0 80px;
+}
+
+textarea[name="qna_comment"]{
+    width: 100%;
+    height: 50px;
+    resize: none;
+    padding-left: 20px;
+    border: 0;
+}
+
+.submitBtn {
+    width: 130px;
+    border: 0;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#myComment {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+input[name="qna_commenter"],
+input[name="qna_comment"] {
+    border: 0;
+
+}
+
+input[name="qna_commenter"]{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+input:focus{
+    outline: none;
+}
+
+#myComment p button {
+    margin-left: 5px;
+    border: 0;
+    color: gray;
+    background-color: transparent;
+    cursor: pointer;
+}

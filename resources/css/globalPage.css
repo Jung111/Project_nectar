@@ -1,0 +1,71 @@
+section#globalPage {
+    /* background-color: red; */
+    width: 1260px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.sideMenu {
+    padding-top: 20px;
+    display: flex;
+    flex-basis: 20%;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+button.tab {
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 0;
+    border-left: 2px solid transparent;
+    margin-bottom: 20px;
+}
+
+button.tab.index.active{
+    border-left: 2px solid orange;
+}
+
+.main {
+    flex-basis: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #f08585;*/
+}
+
+.content.index.active {
+    display: block;
+}
+
+.content.index {
+    display: none;
+}
+
+.content.index h1{
+    margin-bottom: 30px;
+}
+
+
+/* MSG */
+
+/* 진행한 핫딜이 없는 경우 */
+
+
+.msg__wrap {
+    background-color: #cdf2ff;
+    width: 100%;
+    padding: 30px 20px 30px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.msg__wrap i{
+    margin-right: 10px;
+}
+
+

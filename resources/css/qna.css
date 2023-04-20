@@ -1,0 +1,49 @@
+/* QNA */
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+label#qna_picutre{
+    display: none;
+}
+.qna_picutre {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+}
+
+input[name=qna_title],textarea[name=qna_content]{
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+input[name=qna_title]{
+    height: 50px;
+
+}
+
+input[name=qna_title]:focus,
+textarea[name=qna_content]:focus{
+    outline: none;
+}
+
+
+textarea[name=qna_content] {
+    min-height: 500px;
+    padding: 10px 0 0 10px;
+    background-color: transparent;
+    resize: none;
+    border: 1px solid black;
+}
+

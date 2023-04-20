@@ -1,0 +1,140 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+#hotdeal {
+    /* background-color: red; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.hotdealList {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* background-color: blue; */
+}
+
+.hotdealRestr {
+    margin-top: 100px;
+}
+
+.hotdealRestr_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotdealRest__imgDesc {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.hotdealRestr__imgContainer {
+    width: 600px;
+    height: 360px;
+}
+
+.hotdealRestr__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hotdealRestr__imgDeem {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.2405754538143382) 0%,
+            rgba(0, 0, 0, 0) 35%
+    );
+    color: white;
+}
+
+.left,
+.right {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.right{
+    text-align: right;
+}
+
+.left div span{
+    background-color: #ff4545;
+    width: 120px;
+    display: inline-block;
+    width: 70px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.left__item-discountRate p {
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    font-weight: 900;
+    text-align: center;
+    -webkit-text-stroke: 1px #ffd637;
+}
+
+.hotdealRestr__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info__head {
+    margin: 10px 0 20px 0;
+}
+
+.info__hotdealMenu {
+    margin-bottom: 10px;
+}
+
+
+.right__item-menuPrice{
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    text-decoration: line-through;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.right__item-hotdealPrice {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    font-size: 28px;
+
+}
+
+
+/*home*/
+
+.left__item-new.home{
+    height: 20px;
+}
+
+.left__item-discountRate p.home{
+    height: 8px;
+}

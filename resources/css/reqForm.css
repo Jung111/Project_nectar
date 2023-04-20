@@ -1,0 +1,98 @@
+section#req {
+    /*background-color: red;*/
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 1200px;
+    margin-bottom: 40px;
+}
+
+
+
+h1.title{
+    /*background-color: green;*/
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+form#form {
+    /*height: 565px;*/
+    /*background-color: pink;*/
+    display: flex;
+    justify-content: center;
+}
+
+.boxes{
+    flex-basis: 45%;
+}
+
+.inputBox {
+    height: 60px;
+    /*background-color: antiquewhite;*/
+    display: flex;
+    align-items: center;
+}
+input.item.input {
+    height: 30px;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+}
+
+input.item.input:focus{
+    outline: none;
+}
+
+span.item.name {
+    margin: 0 20px 0 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    background-color: #d9d9d9;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.imgContainer {
+    flex-basis: 50%;
+    width: 100%;
+    height: 50%;
+}
+
+.imgContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buttons {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: #8edc88;*/
+}
+
+button {
+    margin: 0 10px 0 10px;
+    background-color: orange;
+    width: 130px;
+    height: 60px;
+    border: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+

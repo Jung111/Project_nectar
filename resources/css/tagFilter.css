@@ -1,0 +1,49 @@
+.tagFilter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tag {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    margin: 5px;
+}
+
+.tag > a > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.background {
+    position: absolute;
+    background-color: rgba(82, 67, 67, 0.178);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.sub_title {
+    padding-left: 80px;
+    /* background-color: red; */
+    height: 150px;
+    line-height: 150px;
+}
+
+.sub_title > h1::before {
+    content: "";
+    padding-left: 25px;
+    border-left: 4px solid orange;
+}

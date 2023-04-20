@@ -1,0 +1,57 @@
+@import url('https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css');
+
+* {
+    font-family: 'NanumSquareNeo';
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* NAVBAR */
+
+section#navbar {
+    /*z-index: 2;*/
+    width: 100%;
+    /*background-color: #e9bea2;*/
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+}
+
+
+.menu {
+    width: 500px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu.item > a,
+.menu.item > div > a{
+    color: white;
+}
+
+.menu.item > a > span,
+.menu.item > div > a > span {
+    font-size: 14px;
+    margin-right: 12px;
+    color: white;
+}
+
+.logo {
+    margin-left: 30px;
+    width: 300px;
+    height: 120px;
+}
+img.logo__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

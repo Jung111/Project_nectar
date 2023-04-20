@@ -1,0 +1,530 @@
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+/* Header */
+
+section#restr-detail {
+    margin: 0 auto;
+    width: 60vw;
+    /*background-color: pink;*/
+    padding: 1.2rem;
+}
+
+h3.title {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+h3.title .star {
+    color: orangered;
+}
+
+ul.reaction {
+    display: flex;
+    padding-bottom: 0.8rem;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+li.reaction {
+    margin-right: 1rem;
+}
+
+/* Review IMG Slider */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+.swiper-wrapper{
+    margin-bottom: 100px;
+}
+
+@media only screen and (min-width: 769px) {
+    .swiper-slide:first-child {
+        transition: transform 100ms;
+    }
+
+    .swiper-slide:first-child img {
+        transition: box-shadow 500ms;
+    }
+
+    .swiper-slide.swiper-slide-active:first-child {
+        transform: translateX(50%);
+        z-index: 2;
+    }
+
+    .swiper-slide.swiper-slide-active:first-child img {
+        box-shadow: 0px 32px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .swiper-slide:nth-child(2) {
+        transition: transform 100ms;
+    }
+
+    .swiper-slide.swiper-slide-next:nth-child(2) {
+        transform: translateX(55%);
+        z-index: 1;
+    }
+
+    .swiper[dir="rtl"] .swiper-slide.swiper-slide-active:first-child {
+        transform: translateX(-50%);
+    }
+
+    .swiper[dir="rtl"] .swiper-slide.swiper-slide-next:nth-child(2) {
+        transform: translateX(-55%);
+    }
+}
+
+/* Restaurant Information */
+
+.content {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.section-left {
+    flex-basis: 70%;
+
+
+}
+
+.section-right {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+}
+
+.info {
+    margin-bottom: 0.8rem;
+}
+.info>h4 {
+    margin-bottom: 10px;
+}
+
+ul.menuList{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li.menu {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem ;
+    font-weight: lighter;
+}
+/*li.menu > span.food::after {*/
+/*    content: " ----------------------------------  ";*/
+/*    color: rgb(160, 160, 160);*/
+/*}*/
+
+
+ul.my-list {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+li.myList {
+    width: 3.125rem;
+}
+
+.myList {
+    font-size: 2em;
+    margin-bottom: 0.8rem;
+}
+
+.myList > p {
+    font-size: 0.4em;
+}
+
+#likeBtn {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 0;
+    font-size: 3rem;
+    color: red;
+    margin-bottom: 20px;
+}
+
+#likeBtn>i:after {
+    display: block;
+    content: "좋아요";
+    color: black;
+    position: relative;
+    top: 16px;
+    font-size: 0.3em;
+    right: 1px;
+}
+
+.tag__wrap > h4 {
+    margin-bottom: 1.5rem;
+}
+
+ul.tagList{
+    padding: 0;
+}
+li.tag {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag > a {
+    text-align: center;
+    padding: 5px 13px 5px 13px;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin-right: 7px;
+    margin-bottom: 10px;
+}
+
+/* Review Write Page */
+
+.review__header {
+    font-size: 2rem;
+    color: orangered;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.review__wrap {
+    width: 100%;
+    border: 1px solid gray;
+    margin-bottom: 50px;
+}
+
+ul.restrRcmdPicker__list {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+li.restrRcmdPicker_item > button.restrRcmdPickerBtn {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+button.restrRcmdPickerBtn {
+    position: relative;
+}
+
+button.restrRcmdPickerBtn > i {
+    font-size: 2rem;
+}
+
+textarea[name="review-editor"] {
+    width: 100%;
+    padding: 10px 0 0 10px;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+label.reviewPicUploadBtn {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 1px solid gray;
+    margin-left: 10px;
+}
+input[type="file"] {
+    display: none;
+}
+
+.pictureUploadButtons_wrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+button.uploadBtn,
+button.delBtn {
+    cursor: pointer;
+    background-color: pink;
+    border: 0;
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+}
+
+/*  Star */
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating > input {
+    display: none;
+}
+.rating > label:before {
+    margin: 5px;
+    font-size: 3em;
+    font-family: "FontAwesome";
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+}
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label {
+    color: #ffd700;
+}
+
+/*  reviewEditor */
+
+textarea[name="review_comment"] {
+    width: 100%;
+    padding: 10px 0 0 10px;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+}
+
+label.reviewPicUploadBtn {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 1px solid gray;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button.uploadBtn,
+button.delBtn {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+}
+
+/* Review Read Page */
+
+li.review {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.review__regdate,
+.review__text {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.review__picture__wrap {
+    width: 100px;
+    height: 100px;
+}
+
+.reviewPicture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review__picWrap > img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.review__user {
+    flex-basis: 15%;
+    position: relative;
+}
+
+.review__user__wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.review__content {
+    flex-basis: 67%;
+}
+
+.review__content__wrap {
+    padding-right: 20px;
+}
+.review__rating {
+    flex-basis: 15%;
+    position: relative;
+}
+
+.review__pictureUpload {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.review__rating > button.review__ratingBtn {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.review__rating > button.review__ratingBtn > i {
+    font-size: 4rem;
+}
+
+.underline {
+    width: 100%;
+    border-bottom: 1px solid #d1cdcd;
+    margin-bottom: 30px;
+}
+
+
+.rvButtons {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+}
+
+.rvButtons > button {
+    width: 4.5em;
+    height: 1.25em;
+    background-color: transparent;
+    color: gray;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.alignContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+/* review rating */
+
+/*  Star */
+
+.reviewRating {
+    border: none;
+    float: left;
+}
+
+.reviewRating > input {
+    display: none;
+}
+.reviewRating > label:before {
+    margin: 3px;
+    font-size: 1em;
+    font-family: "FontAwesome";
+    display: inline-block;
+    content: "\f005";
+}
+
+.reviewRating > .half:before {
+    content: "\f089";
+
+    position: absolute;
+}
+
+/* .rating > label:before {
+  margin: 5px;
+  font-size: 3em;
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+} */
+
+.reviewRating > label {
+    color: #ffd700;
+    float: right;
+}
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+/*.reviewRating > input:checked ~ label, !* show gold star when clicked *!*/
+/*.reviewRating:not(:checked) > label:hover, !* hover current star *!*/
+/*.reviewRating:not(:checked) > label:hover ~ label {*/
+/*    color: #ffd700;*/
+/*}*/
+
+
+
+
+/*rating*/
+
+.review__rating {
+    display: flex;
+}
+
+.review__rating .imgWrap {
+    width: 20px;
+    height: 20px;
+}
+
+.review__rating .imgWrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

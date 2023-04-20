@@ -1,0 +1,39 @@
+#info {
+    width: 100vw;
+    height: 100vh;
+}
+
+.box {
+    position: relative;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 37rem;
+    height: 41rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.box_item {
+    background-color: rgb(250, 171, 138);
+    border-radius: 50%;
+    width: 20em;
+    height: 20em;
+    position: relative;
+}
+
+.box_item .emoji {
+    font-size: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box h1,
+.box p {
+    padding: 2rem 5rem 0 5rem;
+}

@@ -1,0 +1,393 @@
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+section#myPage {
+    /* background-color: red; */
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.sideMenu {
+    padding-top: 20px;
+    display: flex;
+    flex-basis: 20%;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+button.sideMenu__mypage,
+button.sideMenu__user {
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 0;
+    border-left: 2px solid orange;
+    margin-bottom: 20px;
+}
+
+
+.userInfo {
+    flex-basis: 80% !important;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo > h1 {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid;
+}
+
+h1.h1{
+    margin-bottom: 25px;
+}
+
+#userInfoForm {
+    margin-top: 20px;
+    padding: 30px 0 0 0;
+    -webkit-box-shadow: 0px 2px 12px 0px rgba(110, 110, 110, 0.38);
+    -moz-box-shadow: 0px 2px 12px 0px rgba(110, 110, 110, 0.38);
+    box-shadow: 0px 2px 12px 0px rgba(110, 110, 110, 0.38);
+}
+
+.userInfo__box {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.userInfo__profile {
+    /* background-color: blueviolet; */
+    width: 200px;
+    height: 200px;
+}
+
+.user-profile {
+    width: 100%;
+    height: 100%;
+}
+.updateUserProfile {
+    /* background-color: aqua; */
+    position: relative;
+    left: 3em;
+}
+.user-profile {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userPrflUpld {
+    display: none;
+}
+
+.userInfo__btnWrap {
+    display: flex;
+    justify-content: end;
+}
+
+.userInfo__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: green; */
+    width: 38em;
+}
+
+.userNameId {
+    display: flex;
+    justify-content: space-between;
+}
+.userNameId.item {
+    width: 50%;
+    margin-bottom: 14px;
+}
+
+.userNameId.item > input,
+.userEmail > input {
+    height: 40px;
+    margin-right: 8px;
+}
+
+userNameId.item, .userEmail{
+    margin-bottom: 15px;
+}
+.userNameId.item > span,
+.userEmail > span {
+    margin-bottom: 15px;
+}
+
+.userNameId.item,
+.userEmail {
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo__btnWrap {
+    height: 80px;
+    background-color: rgb(245, 241, 239);
+    margin-top: 50px;
+}
+
+#modifyBtn {
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: orange;
+    border: 0;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    position: relative;
+    right: 37px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.regBtn, #userDelBtn{
+    color: white;
+    border: 0;
+    background-color: orange;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 0.625rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+}
+
+
+.container.item h3 {
+    margin-bottom: 30px;
+}
+
+.container.item p {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+
+
+/* board */
+
+
+.userList {
+    margin: 2rem;
+}
+
+thead {
+    height: 40px;
+}
+
+.userList h2 {
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0px 0px 7px #3e3e3e7c;
+}
+
+.userList table {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 300ms ease;
+}
+
+.userList table thead tr .name {
+    width: 10rem;
+}
+
+.userList table:hover {
+    box-shadow: none;
+}
+
+table tbody td {
+    height: 2.8rem;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    color: black;
+}
+
+table tbody tr:last-child {
+    border: none;
+}
+
+.userList a {
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: black;
+    text-decoration: none;
+}
+
+.userBtn,
+select[name="user_state_code"] {
+    padding: 0 5px 0 5px;
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+}
+
+.userBtn {
+    cursor: pointer;
+}
+
+.userBtn:hover {
+    cursor: pointer;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+}
+
+
+#writeBtn {
+    background-color: orange;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0;
+    color: white;
+    margin-top: 30px;
+}
+
+#writeBtn:hover {
+    background-color: white;
+    color: orange;
+
+}
+
+#del_like{
+    background-color: transparent;
+    border: 0;
+    color: gray;
+    cursor: pointer;
+}
+
+#refundBtn {
+    background-color: orange;
+    font-weight: 600;
+    border: 0;
+    width: 120px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+#refundBtn:hover {
+    background-color: white;
+    border: 1px solid orange;
+    color: orange;
+}
+
+
+.container.item.coupon {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.container.item.coupon .box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px 0 100px;
+
+}
+
+.container.item.coupon .box:nth-child(1) {
+    background-color: #d3d3d3;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 20px;
+}
+
+.imgWrap {
+    width: 150px;
+    height: 150px;
+}
+
+.imgWrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container.item.coupon .box:nth-child(2){
+    padding: 40px 40px 20px 0px;
+
+}
+
+.box .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis: 50%;
+    padding-left: 50px;
+}
+
+.box .wrap{
+    display: flex;
+    align-items: center;
+}
+
+
+.wrap button {
+    background-color: white;
+    border: 1px solid black;
+    width: 93px;
+    height: 40px;
+}
+
+.wrap button:hover {
+    background-color: orange;
+    color: white;
+    color: white;
+    border: 0;
+}
+
+
+
+
+
+/**/
+
+
+.sign {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 10px;
+    right: 20px;
+}
+
+.sign img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+

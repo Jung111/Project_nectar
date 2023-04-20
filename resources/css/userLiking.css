@@ -1,0 +1,157 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+section#main {
+    width: 100%;
+}
+
+/* restr */
+
+ul.restrList {
+    /*background-color: blue;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 30px;
+}
+
+li.restr {
+    /*background-color: aqua;*/
+    width: 100%;
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+}
+
+li > a > img {
+    margin: 15px;
+}
+
+.restr__img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.restr__content {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px 15px 10px;
+}
+
+.restr__head {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.restr__info {
+    font-size: 20px;
+    flex-basis: 85%;
+}
+
+.restr__title {
+    margin-bottom: 10px;
+}
+.restr__location {
+    font-size: 0.5em;
+    margin-bottom: 10px;
+}
+
+.restr__like > i {
+    font-size: 50px;
+}
+
+.restr__review {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.user-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+.user-review {
+    flex-basis: 85%;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+
+.reviewReadBtn {
+    font-size: 15px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.restr__moreInfo {
+    width: 94%;
+    text-align: right;
+}
+
+/* like restr */
+
+.likeRestr {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+}
+
+.likeRestr__imgWrap {
+    margin-bottom: 6px;
+    width: 230px;
+    height: 190px;
+}
+
+.likeRestr__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.likeRestr__content.foodtype > h6 > span,
+.likeRestr__content.location > h6 > span {
+    font-weight: 100;
+}
+
+/* Image Slider */
+
+
+
+.swiper.mySwiper{
+    max-width: 900px;
+}
+
+.swiper-wrapper{
+    width: auto !important;
+}
+.swiper-slide{
+    width: 230px !important;
+    /*background-color: red;*/
+}
+
+.swiper, swiper-container{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
