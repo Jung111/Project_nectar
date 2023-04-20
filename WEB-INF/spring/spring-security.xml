@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+        		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+
+    <security:http>
+        <security:intercept-url pattern="/mypage/user/**" access="hasAnyRole('ROLE_USER, ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/mypage/biz/**" access="hasAnyRole('ROLE_BIZ, ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/mypage/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <security:access-denied-handler ref="accessFailHandler"/>
+        <security:form-login login-page="/login/login"
+                             login-processing-url="/login/loginProcess"
+                             username-parameter="user_email"
+                             password-parameter="user_pwd"
+                             authentication-failure-handler-ref="loginFailHandler"
+                             authentication-success-handler-ref="loginSuccessHandler"/>
+        <security:logout logout-url="/login/logout"
+                         logout-success-url="/"
+                         invalidate-session="true"
+                         delete-cookies="true"/>
+
+<!--         최대 한 개의 세션만 생성되도록     -->
+        <security:session-management invalid-session-url="/">
+            <security:concurrency-control max-sessions="1"
+                                          expired-url="/login/login"
+                                          error-if-maximum-exceeded="true"/>
+        </security:session-management>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userDetailService">
+            <security:password-encoder hash="bcrypt"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
+
+
+
+
+
+
+
+
+<!--<security:authentication-provider>-->
+<!--<security:user-service>-->
+<!--    <security:user name="User_1@google.com" password="{noop}1234" authorities="ROLE_USER"/>-->
+<!--    <security:user name="Biz_3@google.com" password="{noop}1234" authorities="ROLE_BIZ"/>-->
+<!--    <security:user name="deerl2@naver.com" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_BIZ, ROLE_USER"/>-->
+<!--</security:user-service>-->
+<!--</security:authentication-provider>-->
+
+
+
+
+
+<!--<security:jdbc-user-service data-source-ref="dataSource"-->
+<!--                            users-by-username-query="select user_email, user_pwd, enabled from user where user_email=?"-->
+<!--                            authorities-by-username-query="select user_email, user_pwd, authority from user where user_email=?"-->
+<!--/>-->

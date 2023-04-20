@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:context="http://www.springframework.org/schema/context"
+			 xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/**" location="/resources/" />
+					<!--/resources/ 아래 모든 경로("/**)롤 맵핑해서 연결-->
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<context:component-scan base-package="project.nectar"/>
+
+	<view-controller path="/" view-name="home"/>
+					<!--root로 방문하면(path="/") home.jsp를 보여준다-->
+
+
+
+	<!--    Google oAuth -->
+
+	<beans:bean id="googleClientID" class="java.lang.String">
+		<beans:constructor-arg value="881256999789-jnihj2dmbpnelg9opqhnpru3h3chsdql.apps.googleusercontent.com"/>
+	</beans:bean>
+	<beans:bean id="googleClientSecret" class="java.lang.String">
+		<beans:constructor-arg value="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"/>
+	</beans:bean>
+	<beans:bean id="googleRedirectUrl" class="java.lang.String">
+		<beans:constructor-arg value="http://localhost:8080/nectar/login/auth/google/callback"/>
+	</beans:bean>
+
+	<beans:bean id="googleSns" class="project.nectar.auth.SnsValue">
+		<beans:constructor-arg value="google"/>
+		<beans:constructor-arg ref="googleClientID"/>
+		<beans:constructor-arg ref="googleClientSecret"/>
+		<beans:constructor-arg ref="googleRedirectUrl"/>
+	</beans:bean>
+
+	<beans:bean id="googleConnectionFactory"
+				class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<beans:constructor-arg ref="googleClientID"/>
+		<beans:constructor-arg ref="googleClientSecret"/>
+	</beans:bean>
+
+	<beans:bean id="googleOAuth2Parameters"
+				class="org.springframework.social.oauth2.OAuth2Parameters">
+		<beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"/>
+		<!--beans:property name="scope" value="https://www.googleapis.com/oauth2/v3/userinfo.email"/-->
+		<!-- <beans:property name="scope" value="https://www.googleapis.com/auth/plus.login"
+            /> -->
+		<beans:property name="redirectUri" ref="googleRedirectUrl"/>
+	</beans:bean>
+
+
+</beans:beans>
+
+
+
