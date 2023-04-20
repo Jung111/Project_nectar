@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.BizAccountMapper">
+
+    <select id="SearchResultBizAccount" parameterType="map" resultType="BizAccountDto">
+        SELECT *
+        FROM bizaccount
+        WHERE true
+        <choose>
+            <when test='option=="email"'>
+                And   bizAccount_email      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="name"'>
+                And   bizAccount_name      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="stateCode"'>
+                And   bizAccount_state_code      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                And   (bizAccount_email       LIKE concat('%', #{keyword}, '%')
+                OR     bizAccount_name        LIKE concat('%', #{keyword}, '%')
+                OR     bizAccount_state_code  LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="select" parameterType="String" resultType="BizAccountDto">
+        SELECT *
+        FROM bizaccount
+        WHERE bizAccount_email = #{bizAccount_email};
+    </select>
+
+    <insert id="insert" parameterType="BizAccountDto">
+        INSERT INTO bizaccount (bizAccount_email, bizAccount_pwd, bizAccount_name, bizAccount_phone, bizAccount_picture, bizAccount_regdate, bizAccount_regNum)
+        VALUES (#{bizAccount_email}, #{bizAccount_pwd}, #{bizAccount_name}, #{bizAccount_phone}, #{bizAccount_picture}, now(), #{bizAccount_regNum});
+    </insert>
+
+    <update id="update" parameterType="BizAccountDto">
+        UPDATE bizAccount
+        SET bizAccount_pwd     = #{bizAccount_pwd},
+            bizAccount_name    = #{bizAccount_name},
+            bizAccount_phone    = #{bizAccount_phone},
+            bizAccount_picture = #{bizAccount_picture},
+            bizAccount_regNum = #{bizAccount_regNum}
+        WHERE bizAccount_email = #{bizAccount_email};
+    </update>
+
+    <update id="updateStateCode" parameterType="BizAccountDto">
+        UPDATE bizAccount
+        SET   bizAccount_state_code =#{bizAccount_state_code}
+        WHERE bizAccount_email = #{bizAccount_email};
+    </update>
+
+
+    <delete id="delete" parameterType="String">
+        DELETE
+        FROM bizaccount
+        WHERE bizAccount_email = #{bizAccount_email};
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE
+        FROM bizaccount;
+    </delete>
+
+    <select id="count" resultType="int">
+        SELECT count(*)
+        FROM bizaccount
+    </select>
+
+
+    <select id="selectByUserEmail" parameterType="String" resultType="BizAccountDetailsDto">
+        SELECT *
+        FROM bizaccount
+        WHERE bizAccount_email = #{bizAccount_email};
+    </select>
+
+
+</mapper>

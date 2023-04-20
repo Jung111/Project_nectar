@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="AdminDto" type="project.nectar.domain.AdminDto"/>
+        <typeAlias alias="BizAccountDto" type="project.nectar.domain.BizAccountDto"/>
+        <typeAlias alias="UserDto" type="project.nectar.domain.UserDto"/>
+        <typeAlias alias="SearchCondition" type="project.nectar.domain.SearchCondition"/>
+        <typeAlias alias="RestrDto" type="project.nectar.domain.RestrDto"/>
+        <typeAlias alias="RestrMenuDto" type="project.nectar.domain.RestrMenuDto"/>
+        <typeAlias alias="ReviewDto" type="project.nectar.domain.ReviewDto"/>
+        <typeAlias alias="ReviewPlusDto" type="project.nectar.domain.ReviewPlusDto"/>
+        <typeAlias alias="LikelistDto" type="project.nectar.domain.LikelistDto"/>
+        <typeAlias alias="HotdealDto" type="project.nectar.domain.HotdealDto"/>
+        <typeAlias alias="BrowserHistoryDto" type="project.nectar.domain.BrowserHistoryDto"/>
+        <typeAlias alias="QNADto" type="project.nectar.domain.QNADto"/>
+        <typeAlias alias="Request_HotdealDto" type="project.nectar.domain.Request_HotdealDto"/>
+        <typeAlias alias="Request_RestrDto" type="project.nectar.domain.Request_RestrDto"/>
+        <typeAlias alias="UserDetailsDto" type="project.nectar.domain.UserDetailsDto"/>
+        <typeAlias alias="BizAccountDetailsDto" type="project.nectar.domain.BizAccountDetailsDto"/>
+        <typeAlias alias="AdminDetailsDto" type="project.nectar.domain.AdminDetailsDto"/>
+        <typeAlias alias="PaymentDto" type="project.nectar.domain.PaymentDto"/>
+        <typeAlias alias="HotdealPlusDto" type="project.nectar.domain.HotdealPlusDto"/>
+        <typeAlias alias="RefundDto" type="project.nectar.domain.RefundDto"/>
+
+    </typeAliases>
+</configuration>

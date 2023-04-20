@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.BrowserHistoryMapper">
+
+
+    <select id="select_TopSearchKeyword"  resultType="BrowserHistoryDto">
+        select *
+        from (select row_number() over (order by count(searchkeyword) desc) rn, searchkeyword, count(searchkeyword)
+              from browserhistory
+              group by searchkeyword
+              having browserhistory.searchkeyword is NOT NULL) Popular_SearchKeyword_LIST
+        where rn between 1 and 5;
+    </select>
+
+
+
+    <select id="selectByJSESSIONID" parameterType="BrowserHistoryDto" resultType="RestrDto">
+        select distinct a.*
+        from (select r.*
+              from browserhistory b
+                       inner join restr r on b.restr_NUM = r.restr_NUM
+              where b.JSESSIONID = #{JSESSIONID} and b.restr_NUM is NOT NULL
+              order by b.browserHistory_regdate desc) a
+        limit 0,5;
+    </select>
+
+
+    <select id="selectByUser_email" parameterType="BrowserHistoryDto" resultType="RestrDto">
+        select distinct a.*
+        from (select r.*
+              from browserhistory b
+                       inner join restr r on b.restr_NUM = r.restr_NUM
+              where b.user_email = #{user_email} and b.restr_NUM is NOT NULL
+              order by b.browserHistory_regdate desc) a
+        limit 0,5;
+    </select>
+
+
+
+    <insert id="insertKeyword" parameterType="BrowserHistoryDto">
+        insert into browserhistory
+            (JSESSIONID, user_email, searchKeyword)
+        values
+            (#{JSESSIONID}, #{user_email}, #{searchKeyword});
+    </insert>
+
+    <insert id="insertRestrNUM" parameterType="BrowserHistoryDto">
+        insert into browserhistory
+            (JSESSIONID, user_email, restr_NUM)
+        values
+            (#{JSESSIONID}, #{user_email}, #{restr_NUM});
+    </insert>
+
+    <insert id="insertHotdealNUM" parameterType="BrowserHistoryDto">
+        insert into browserhistory
+            (JSESSIONID, user_email, hotdeal_NUM)
+        values
+            (#{JSESSIONID}, #{user_email}, #{hotdeal_NUM});
+    </insert>
+
+
+
+    <delete id="deleteUserEmail" parameterType="String">
+        delete from browserhistory
+        where user_email=#{user_email}
+    </delete>
+
+    <delete id="deleteJSESSIONID" parameterType="String">
+        delete from browserhistory
+        where JSESSIONID=#{JSESSIONID}
+    </delete>
+
+
+
+</mapper>

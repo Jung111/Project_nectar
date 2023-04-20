@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.RestrMenuMapper">
+
+    <select id="selectAllMenu" parameterType="int" resultType="RestrMenuDto">
+        SELECT *
+        from restr_menu
+        where restr_NUM = #{restr_NUM}
+    </select>
+
+
+    <insert id="insert" parameterType="RestrMenuDto">
+        insert into restr_menu
+            (restr_NUM, restr_menu_food, restr_menu_price, restr_menu_desc)
+        values
+            (#{restr_NUM}, #{restr_menu_food}, #{restr_menu_price}, #{restr_menu_desc} );
+    </insert>
+
+    <delete id="deleteAll" parameterType="int">
+        delete from restr_menu
+        where restr_NUM = #{restr_NUM}
+    </delete>
+
+    <delete id="delete" parameterType="int">
+        delete from restr_menu
+        WHERE restr_menu_NUM = #{restr_menu_NUM}
+    </delete>
+
+    <update id="update" parameterType="RestrMenuDto">
+        UPDATE restr_menu
+        SET restr_NUM = #{restr_NUM},
+            restr_menu_food = #{restr_menu_food},
+            restr_menu_price = #{restr_menu_price},
+            restr_menu_desc = #{restr_menu_desc}
+        WHERE restr_menu_NUM = #{restr_menu_NUM}
+    </update>
+
+    <update id="updateHotdeal" parameterType="RestrMenuDto">
+        UPDATE restr_menu
+        SET  restr_menu_hotdeal_NUM = #{restr_menu_hotdeal_NUM}
+        WHERE restr_menu_NUM = #{restr_menu_NUM}
+    </update>
+
+</mapper>

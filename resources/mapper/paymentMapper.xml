@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.PaymentMapper">
+
+
+    <select id="count" parameterType="PaymentDto" resultType="int">
+        select count(*)
+        from payment
+        where hotdeal_NUM = #{hotdeal_NUM}
+    </select>
+
+
+    <select id="select_PaymentInfo_byUser" parameterType="String" resultType="HotdealPlusDto">
+        SELECT h.*, p.*
+        from payment p inner join hotdeal h on p.hotdeal_NUM = h.hotdeal_NUM
+        where p.user_email = #{user_email};
+    </select>
+
+    <select id="select_PaymentInfo_byBiz" parameterType="String" resultType="HotdealPlusDto">
+        SELECT h.*, p.*
+        from payment p inner join hotdeal h on p.hotdeal_NUM = h.hotdeal_NUM
+        where p.bizAccount_email = #{bizAccount_email};
+    </select>
+
+    <select id="select_PaymentInfo_byPayment_NUM" parameterType="int" resultType="HotdealPlusDto">
+        SELECT h.*, p.*
+        from payment p inner join hotdeal h on p.hotdeal_NUM = h.hotdeal_NUM
+        where p.payment_NUM = #{payment_NUM};
+    </select>
+
+
+    <insert id="insert" parameterType="PaymentDto">
+        insert into payment
+            (imp_uid, merchant_uid, user_email, pay_date, amount, card_no, refund, bizAccount_email, hotdeal_NUM)
+        values
+            (#{imp_uid}, #{merchant_uid}, #{user_email}, #{pay_date}, #{amount}, #{card_no}, #{refund}, #{bizAccount_email}, #{hotdeal_NUM});
+    </insert>
+
+
+    <delete id="delete" parameterType="PaymentDto">
+        delete from payment
+        where merchant_uid = #{merchant_uid} AND user_email = #{user_email} AND pay_date = #{pay_date}
+    </delete>
+
+
+
+</mapper>
+
+

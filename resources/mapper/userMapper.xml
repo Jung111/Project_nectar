@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.UserMapper">
+
+    <select id="SearchResultUser" parameterType="map" resultType="UserDto">
+        SELECT *
+        FROM user
+        WHERE true
+        <choose>
+            <when test='option=="email"'>
+                And   user_email      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="name"'>
+                And   user_name      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="stateCode"'>
+                And   user_state_code      LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                And   (user_email       LIKE concat('%', #{keyword}, '%')
+                OR     user_name        LIKE concat('%', #{keyword}, '%')
+                OR     user_state_code  LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+    <select id="select" parameterType="String" resultType="UserDto">
+        SELECT *
+        FROM user
+        WHERE user_email = #{user_email};
+    </select>
+
+    <insert id="insert" parameterType="UserDto">
+        INSERT INTO user ( user_email, user_pwd, user_name, user_phone, user_picture, user_regdate)
+        VALUES (#{user_email}, #{user_pwd}, #{user_name}, #{user_phone},#{user_picture}, now());
+    </insert>
+
+    <update id="update" parameterType="UserDto">
+        UPDATE user
+        SET user_pwd     = #{user_pwd},
+            user_name    = #{user_name},
+            user_phone    = #{user_phone},
+            user_picture = #{user_picture}
+        WHERE user_email = #{user_email};
+    </update>
+
+
+    <update id="updateStateCode" parameterType="UserDto">
+        UPDATE user
+        SET   user_state_code =#{user_state_code}
+        WHERE user_email = #{user_email};
+    </update>
+
+
+    <delete id="delete" parameterType="String">
+        DELETE
+        FROM user
+        WHERE user_email = #{user_email};
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE
+        FROM user
+    </delete>
+
+    <select id="count" resultType="int">
+        SELECT count(*)
+        FROM user
+    </select>
+
+
+    <select id="selectByUserEmail" parameterType="String" resultType="UserDetailsDto">
+        SELECT *
+        FROM user
+        WHERE user_email = #{user_email};
+    </select>
+
+</mapper>

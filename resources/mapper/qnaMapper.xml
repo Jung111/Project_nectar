@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.QNAMapper">
+
+
+    <select id="selectAll"  resultType="QNADto">
+        SELECT *
+        FROM qna
+        ORDER BY qna_NUM DESC
+    </select>
+
+    <select id="selectAllByWriter" parameterType="String" resultType="QNADto">
+        SELECT *
+        FROM qna
+        WHERE qna_writer = #{qna_writer}
+        ORDER BY qna_NUM DESC
+    </select>
+
+    <select id="select" parameterType="int" resultType="QNADto">
+        SELECT *
+        FROM qna
+        WHERE qna_NUM = #{qna_NUM}
+    </select>
+
+    <select id="selectByWriter" parameterType="QNADto" resultType="QNADto">
+        SELECT *
+        FROM qna
+        WHERE qna_NUM = #{qna_NUM} AND qna_writer = #{qna_writer}
+    </select>
+
+    <insert id="insert" parameterType="QNADto">
+        INSERT INTO qna
+        (qna_title, qna_content, qna_picture, qna_regdate, qna_writer, qna_name)
+        VALUES
+            (#{qna_title}, #{qna_content}, #{qna_picture}, now(), #{qna_writer}, #{qna_name})
+    </insert>
+
+    <update id="update" parameterType="QNADto">
+        UPDATE qna
+        SET qna_title = #{qna_title}, qna_content = #{qna_content}, qna_picture = #{qna_picture}
+        WHERE qna_NUM = #{qna_NUM} and qna_writer = #{qna_writer}
+    </update>
+
+    <delete id="delete" parameterType="QNADto">
+        DELETE FROM qna
+        WHERE qna_NUM = #{qna_NUM}
+    </delete>
+
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.Request_RestrMapper">
+
+    <select id="selectAll" resultType="Request_RestrDto">
+        SELECT * from request_restr
+    </select>
+
+
+    <select id="select" parameterType="int" resultType="Request_RestrDto">
+        SELECT * from request_restr
+        where request_restr_NUM=#{request_restr_NUM}
+    </select>
+
+
+    <insert id="insertAll" parameterType="Request_RestrDto">
+        insert into request_restr
+        (request_restr_name, request_restr_latitude, request_restr_longitude, request_restr_location, request_restr_location_tag, request_restr_phone, request_restr_time,
+         request_restr_star, request_restr_foodType, request_restr_cost, request_restr_parking, request_restr_tag, request_restr_menu, request_restr_desc,
+         request_restr_picture, request_restr_category_loc, request_bizAccount_email, request_biz_reg_num)
+        values (#{request_restr_name}, #{request_restr_latitude}, #{request_restr_longitude}, #{request_restr_location}, #{request_restr_location_tag},
+                #{request_restr_phone}, #{request_restr_time}, #{request_restr_star}, #{request_restr_foodType}, #{request_restr_cost},
+                #{request_restr_parking}, #{request_restr_tag}, #{request_restr_menu}, #{request_restr_desc},#{request_restr_picture},  #{request_restr_category_loc},
+                #{request_bizAccount_email}, #{request_biz_reg_num});
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from request_restr
+        where request_restr_NUM=#{request_restr_NUM}
+    </delete>
+
+
+    <update id="updateState" parameterType="Request_RestrDto">
+        UPDATE request_restr
+        SET evaluate_msg = #{evaluate_msg}, evaluate_code = #{evaluate_code}
+        WHERE request_restr_NUM = #{request_restr_NUM};
+    </update>
+
+    <select id="selectMyReqRestr" parameterType="String" resultType="Request_RestrDto">
+        SELECT *
+        FROM request_restr
+        WHERE request_bizAccount_email = #{Biz_email}
+    </select>
+
+</mapper>

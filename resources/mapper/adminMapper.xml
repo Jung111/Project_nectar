@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.AdminMapper">
+
+    <insert id="insert" parameterType="AdminDto">
+        INSERT INTO administrator (admin_email, admin_pwd, admin_name, admin_phone, admin_picture, admin_regdate)
+        VALUES (#{admin_email}, #{admin_pwd}, #{admin_name}, #{admin_phone},#{admin_picture}, now());
+    </insert>
+
+    <select id="select" parameterType="String" resultType="AdminDto">
+        SELECT *
+        FROM administrator
+        WHERE admin_email = #{admin_email};
+    </select>
+
+    <update id="update" parameterType="AdminDto">
+        UPDATE administrator
+        SET admin_email   = #{admin_email},
+            admin_pwd     = #{admin_pwd},
+            admin_name    = #{admin_name},
+            admin_phone    = #{admin_phone},
+            admin_picture = #{admin_picture},
+        WHERE admin_email = #{admin_email};
+    </update>
+
+    <delete id="delete" parameterType="String">
+        DELETE
+        FROM administrator
+        WHERE admin_email = #{admin_email};
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE
+        FROM administrator;
+    </delete>
+
+    <select id="count" resultType="int">
+        SELECT count(*)
+        FROM administrator
+    </select>
+
+
+    <select id="selectByUserEmail" parameterType="String" resultType="AdminDetailsDto">
+        SELECT *
+        FROM administrator
+        WHERE admin_email = #{admin_email};
+    </select>
+
+</mapper>

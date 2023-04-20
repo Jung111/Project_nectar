@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.Request_HotdealMapper">
+
+    <select id="selectAll" resultType="Request_HotdealDto">
+        SELECT *
+        FROM request_hotdeal
+        ORDER BY request_hotdeal_regdate DESC
+    </select>
+
+    <select id="select" parameterType="int" resultType="Request_HotdealDto">
+        SELECT *
+        FROM request_hotdeal
+        WHERE request_hotdeal_NUM = #{request_hotdeal_NUM}
+    </select>
+
+
+    <insert id="insert" parameterType="Request_HotdealDto">
+        INSERT INTO request_hotdeal
+        (request_restr_NUM, request_restr_name, request_restr_category_loc, request_restr_menu_NUM, request_restr_menu_food,
+         request_restr_menu_price, request_hotdeal_price, request_hotdeal_discountRate, request_hotdeal_desc, request_hotdeal_picture, request_hotdeal_useDate, request_hotdeal_eventDuration,
+         request_hotdeal_regdate, request_hotdeal_update, request_hotdeal_salesVolume, request_hotdeal_MaxSalesVolume, request_bizAccount_email)
+        VALUES (#{request_restr_NUM}, #{request_restr_name}, #{request_restr_category_loc}, #{request_restr_menu_NUM},
+                #{request_restr_menu_food}, #{request_restr_menu_price}, #{request_hotdeal_price}, #{request_hotdeal_discountRate},
+                #{request_hotdeal_desc}, #{request_hotdeal_picture}, #{request_hotdeal_useDate}, #{request_hotdeal_eventDuration}, now(), now(), #{request_hotdeal_salesVolume},
+                #{request_hotdeal_MaxSalesVolume}, #{request_bizAccount_email});
+    </insert>
+
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM request_hotdeal
+        WHERE request_hotdeal_NUM = #{request_hotdeal_NUM}
+    </delete>
+
+
+    <update id="updateState" parameterType="Request_HotdealDto">
+        UPDATE request_hotdeal
+        SET evaluate_msg = #{evaluate_msg}, evaluate_code = #{evaluate_code}
+        WHERE request_hotdeal_NUM = #{request_hotdeal_NUM};
+    </update>
+
+    <select id="selectMyReqHotdeal" parameterType="String" resultType="Request_HotdealDto">
+        SELECT *
+        FROM request_hotdeal
+        WHERE request_bizAccount_email = #{Biz_email}
+        ORDER BY request_hotdeal_regdate DESC
+    </select>
+
+</mapper>

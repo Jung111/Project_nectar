@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.RefundMapper">
+
+
+    <select id="selectAll" parameterType="String" resultType="RefundDto">
+        SELECT *
+        from refund
+        where bizAccount_email = #{bizAccount_email}
+    </select>
+
+
+    <select id="select" parameterType="int" resultType="RefundDto">
+        SELECT *
+        from refund
+        where refund_NUM = #{refund_NUM}
+    </select>
+
+
+    <insert id="insert" parameterType="RefundDto">
+        insert into refund
+        (payment_NUM, user_email, bizAccount_email, refund_amount, refund_holder, refund_bank, refund_account, refund_reason, refund_regdate)
+        values
+            (#{payment_NUM}, #{user_email}, #{bizAccount_email}, #{refund_amount}, #{refund_holder}, #{refund_bank}, #{refund_account}, #{refund_reason}, #{refund_regdate});
+    </insert>
+
+
+</mapper>

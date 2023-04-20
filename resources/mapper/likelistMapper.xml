@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.LikelistMapper">
+
+    <select id="select" parameterType="LikelistDto" resultType="LikelistDto">
+        SELECT *
+        from likelist
+        where restr_NUM = #{restr_NUM} And user_email = #{user_email}
+    </select>
+
+    <select id="selectAll" parameterType="String" resultType="LikelistDto">
+        SELECT * from likelist
+        where user_email = #{user_email}
+    </select>
+
+    <select id="selectMyLikeList" parameterType="String" resultType="RestrDto">
+        SELECT r.*
+        from likelist l inner join restr r on l.restr_NUM = r.restr_NUM
+        where user_email = #{user_email};
+    </select>
+
+    <select id="count" parameterType="int" resultType="int">
+        select count(*) from likelist
+        where restr_NUM = #{restr_NUM}
+    </select>
+
+    <insert id="insert" parameterType="LikelistDto">
+        insert into likelist
+            (restr_NUM, user_email)
+        values
+            (#{restr_NUM}, #{user_email});
+    </insert>
+
+    <delete id="deleteAll" parameterType="String">
+        delete from likelist
+        where user_email=#{user_email}
+    </delete>
+
+    <delete id="delete" parameterType="LikelistDto">
+        delete from likelist
+        where restr_NUM=#{restr_NUM} AND user_email=#{user_email}
+    </delete>
+
+    <delete id="deleteRestr" parameterType="int">
+        delete from likelist
+        where restr_NUM=#{restr_NUM}
+    </delete>
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.HotdealMapper">
+
+
+    <select id="selectMyHotdeals" parameterType="String" resultType="HotdealDto">
+        SELECT *
+        FROM hotdeal
+        WHERE bizAccount_email = #{bizAccount_email}
+        ORDER BY hotdeal_regdate DESC
+    </select>
+
+    <select id="selectAll" resultType="HotdealDto">
+        SELECT *
+        FROM hotdeal
+        ORDER BY hotdeal_regdate DESC
+        LIMIT 6
+    </select>
+
+    <select id="select" parameterType="int" resultType="HotdealDto">
+        SELECT *
+        FROM hotdeal
+        WHERE hotdeal_NUM = #{hotdeal_NUM}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM hotdeal
+        WHERE hotdeal_NUM = #{hotdeal_NUM}
+    </delete>
+
+    <update id="update" parameterType="HotdealDto">
+        UPDATE hotdeal
+        SET restr_menu_NUM   = #{restr_menu_NUM},
+            restr_menu_food  = #{restr_menu_food},
+            restr_menu_price = #{restr_menu_price},
+            hotdeal_update   = now()
+        WHERE hotdeal_NUM = #{hotdeal_NUM}
+    </update>
+
+
+    <update id="updateSalesVolume" parameterType="HotdealDto">
+        UPDATE hotdeal
+        SET hotdeal_salesVolume   = #{hotdeal_salesVolume},
+            hotdeal_update   = now()
+        WHERE hotdeal_NUM = #{hotdeal_NUM}
+    </update>
+
+
+    <insert id="insert" parameterType="HotdealDto">
+        INSERT INTO hotdeal
+        (restr_NUM, restr_name, restr_category_loc, restr_menu_NUM, restr_menu_food,
+         restr_menu_price, hotdeal_price, hotdeal_discountRate, hotdeal_desc, hotdeal_picture, hotdeal_useDate, hotdeal_eventDuration,
+         hotdeal_regdate, hotdeal_update, hotdeal_salesVolume, hotdeal_MaxSalesVolume, bizAccount_email)
+        VALUES (#{restr_NUM}, #{restr_name}, #{restr_category_loc}, #{restr_menu_NUM},
+                #{restr_menu_food}, #{restr_menu_price}, #{hotdeal_price}, #{hotdeal_discountRate},
+                #{hotdeal_desc}, #{hotdeal_picture}, #{hotdeal_useDate}, #{hotdeal_eventDuration}, now(), now(), #{hotdeal_salesVolume},
+                #{hotdeal_MaxSalesVolume}, #{bizAccount_email});
+    </insert>
+
+
+</mapper>

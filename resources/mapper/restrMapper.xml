@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.RestrMapper">
+
+    <!--검색 쿼리 완성본-->
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="searchEngine"'>
+                AND( restr_name          LIKE concat('%', #{keyword}, '%')
+                OR   restr_location      LIKE concat('%', #{keyword}, '%')
+                OR   restr_location_tag  LIKE concat('%', #{keyword}, '%')
+                OR   restr_foodType      LIKE concat('%', #{keyword}, '%')
+                OR   restr_menu          LIKE concat('%', #{keyword}, '%')
+                OR   restr_tag      LIKE concat('%', #{keyword}, '%'))
+            </when>
+            <when test='option=="homeFilter"'>
+                AND(  restr_foodType     LIKE concat('%', #{foodType}, '%')
+                And   restr_cost         LIKE concat('%', #{cost},     '%')
+                And  (restr_location     LIKE concat('%', #{location}, '%')  OR  restr_location_tag LIKE concat('%', #{location}, '%'))
+                And   restr_parking      LIKE concat('%', #{parking},  '%'))
+            </when>
+            <otherwise>
+                AND(  restr_tag     LIKE concat('%', #{tag}, '%'))
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="SearchResultPage" parameterType="SearchCondition" resultType="RestrDto">
+        SELECT *
+        FROM  restr
+        WHERE true
+        <include refid="searchCondition"/>
+        ORDER BY restr_star DESC, restr_NUM ASC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM  restr
+        WHERE true
+        <include refid="searchCondition"/>
+    </select>
+
+    <select id="select" parameterType="int" resultType="RestrDto">
+        SELECT * from restr
+        where restr_NUM=#{restr_NUM}
+    </select>
+
+
+    <select id="selectByBiz_email" parameterType="String" resultType="RestrDto">
+        SELECT * from restr
+        where bizAccount_email=#{bizAccount_email}
+    </select>
+
+
+    <delete id="delete" parameterType="int">
+        delete from restr
+        where restr_NUM=#{restr_NUM}
+    </delete>
+
+    <insert id="insertAll" parameterType="RestrDto">
+        insert into restr
+        (restr_name, restr_latitude, restr_longitude, restr_location, restr_location_tag, restr_phone, restr_time,
+         restr_star, restr_foodType, restr_cost, restr_parking, restr_tag, restr_menu, restr_desc,
+         restr_picture, restr_category_loc, bizAccount_email, biz_reg_num)
+        values (#{restr_name}, #{restr_latitude}, #{restr_longitude}, #{restr_location}, #{restr_location_tag},
+                #{restr_phone}, #{restr_time}, #{restr_star}, #{restr_foodType}, #{restr_cost},
+                #{restr_parking}, #{restr_tag}, #{restr_menu}, #{restr_desc},#{restr_picture},  #{restr_category_loc},
+                #{bizAccount_email}, #{biz_reg_num});
+    </insert>
+
+    <update id="update" parameterType="RestrDto">
+        update restr
+        set restr_name = #{restr_name}
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+    <update id="updateViewCnt" parameterType="int">
+        update restr
+        set restr_viewCnt = restr_viewCnt+1
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+    <update id="updateReviewCnt" parameterType="RestrDto">
+        update restr
+        set restr_reviewCnt = #{restr_reviewCnt}
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+    <update id="updateLikeCnt" parameterType="RestrDto">
+        update restr
+        set restr_likeCnt = #{restr_likeCnt}
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+    <update id="updateStar" parameterType="RestrDto">
+        update restr
+        set restr_star = #{restr_star}
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+
+    <update id="sync_ReviewCnt" parameterType="RestrDto">
+        update restr
+        set restr_reviewCnt = #{restr_reviewCnt}
+        where restr_NUM = #{restr_NUM}
+    </update>
+
+    <update id="updateHotdeal" parameterType="RestrDto">
+        UPDATE restr
+        SET  restr_hotdeal_NUM = #{restr_hotdeal_NUM}
+        WHERE restr_NUM = #{restr_NUM}
+    </update>
+
+</mapper>
+
+

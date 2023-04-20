@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.nectar.repository.ReviewMapper">
+
+    <select id="count" parameterType="int" resultType="int">
+        SELECT count(*) FROM review
+        WHERE  restr_NUM = #{restr_NUM}
+    </select>
+
+    <select id="selectAll" parameterType="int" resultType="ReviewDto">
+        SELECT *
+        FROM review
+        WHERE  restr_NUM = #{restr_NUM}
+        ORDER BY review_regdate DESC, review_NUM DESC
+    </select>
+
+    <select id="select" parameterType="int" resultType="ReviewDto">
+        SELECT *
+        FROM review
+        WHERE review_NUM = #{review_NUM}
+    </select>
+
+    <select id="selectMyReviews" parameterType="String" resultType="ReviewPlusDto">
+        SELECT r.*, restr.restr_name, restr.restr_location, restr.restr_phone, restr.restr_picture
+        FROM review r inner join restr restr on r.restr_NUM = restr.restr_num
+        WHERE r.user_email = #{user_email}
+        ORDER BY r.review_regdate DESC, r.review_NUM DESC
+    </select>
+
+    <insert id="insert" parameterType="ReviewDto">
+        INSERT INTO review
+            (restr_NUM, user_email, user_name, user_picture, review_comment, review_picture, review_star, review_regdate, review_update)
+        VALUES
+            (#{restr_NUM}, #{user_email}, #{user_name},#{user_picture},  #{review_comment}, #{review_picture}, ${review_star}, now(), now())
+    </insert>
+
+    <delete id="deleteAll" parameterType="int">
+        DELETE FROM review
+        WHERE  restr_NUM = #{restr_NUM}
+    </delete>
+
+    <delete id="delete" parameterType="ReviewDto">
+        DELETE FROM review
+        WHERE review_NUM = #{review_NUM}
+    </delete>
+
+    <update id="update" parameterType="ReviewDto">
+        UPDATE review
+        SET review_comment = #{review_comment}, review_star = #{review_star}, review_update = now()
+        WHERE review_NUM = #{review_NUM}
+    </update>
+
+    <select id="getAvgStar" parameterType="int" resultType="float">
+        SELECT AVG(review_star)
+        FROM review
+        WHERE restr_NUM = ${restr_NUM}
+    </select>
+
+</mapper>
+
